@@ -154,12 +154,35 @@
             android:layout_toRightOf="@id/textview_form_snooze_time"
             android:layout_marginTop="30dp"
             android:layout_marginLeft="50dp"/>
+        <TextView
+            android:paddingBottom="10dp"
+            android:id="@+id/textview_form_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/txtcolor"
+            android:textSize="20dp"
+            android:text="@string/form_description"
+            android:layout_below="@+id/textview_form_remind_day"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"/>
+        <EditText
+            android:id="@+id/edttext_form_description"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/description_hint"
+            android:inputType="textCapSentences|textMultiLine"
+            android:layout_toRightOf="@+id/textview_form_description"
+            android:layout_below="@+id/spinner_form_remind_day"
+            android:maxLength="200"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="50dp"
+            android:maxLines="5" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/button_submit"
             android:text="@string/button_submit"
-            android:layout_below="@+id/textview_form_remind_day"
+            android:layout_below="@+id/edttext_form_description"
             android:layout_marginLeft="80dp"
             android:layout_marginTop="30dp"/>
 </RelativeLayout>

@@ -45,14 +45,6 @@
            android:layout_marginTop="20dp"
            android:paddingBottom="10dp"
            />
-       <TextView
-           android:id="@+id/textview_form_no"
-           android:text="@string/form_no"
-           android:textSize="20dp"
-           android:textColor="@color/txtcolor"
-           android:layout_marginTop="20dp"
-           android:paddingBottom="10dp"
-           />
        </GridLayout>
     <GridLayout
         android:id="@+id/gridlayout_form1"
@@ -83,13 +75,6 @@
         <EditText
             android:id="@+id/edittext_form_address"
             android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            />
-        <EditText
-            android:id="@+id/edittext_form_no"
-            android:layout_width="160dp"
-            android:inputType="number"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             />
