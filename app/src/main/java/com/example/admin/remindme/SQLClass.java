@@ -33,6 +33,9 @@ public class SQLClass extends SQLiteOpenHelper{
     public static final String COL13="REMIND_DAY";
     public static final String COL14="DESC";
     public static final String COL15="TYPE";
+    public static final String EXT_COLID="ID";
+    public static final String EXT_COL1="COL1",EXT_COL2="COL2",EXT_COL3="COL3",EXT_COL4="COL4",EXT_COL5="COL5",EXT_COL6="COL6";
+    public static final String EXT_COL7="COL7",EXT_COL8="COL8",EXT_COL9="COL9",EXT_COL10="COL10";
 
     public SQLClass(Context context) {
         super(context, DATABASE_NAME, null, 1);
