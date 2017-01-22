@@ -36,14 +36,14 @@ public class SQLClass extends SQLiteOpenHelper{
 
     public SQLClass(Context context) {
         super(context, DATABASE_NAME, null, 1);
-        //db=this.getWritableDatabase();
+        db=this.getWritableDatabase();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + CAT_NAME + "(CATEGORY_NAME TEXT)");
         db.execSQL("create table " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT,MOBILE_NO TEXT,EMAIL TEXT,ADDRESS TEXT,GENDER TEXT,DATE_BIRTH TEXT,START_DATE TEXT,END_DATE TEXT,INSTALL_MONTH TEXT,REMIND_TIME TEXT,SNOOZE_TIME TEXT,REMIND_DAY TEXT,DESC TEXT,TYPE TEXT)");
-        db.execSQL("create table " + EXT_TABLE + "(ID INTEGER PRIMARY KEY,COL1 TEXT,COL2 TEXT,COL3 TEXT,COL4 TEXT,COL5 TEXT,COL6 TEXT,COL7 TEXT,COL8 TEXT,COL9 TEXT,COL10 TEXT,)");
+        db.execSQL("create table " + EXT_TABLE + "(ID INTEGER PRIMARY KEY,COL1 TEXT,COL2 TEXT,COL3 TEXT,COL4 TEXT,COL5 TEXT,COL6 TEXT,COL7 TEXT,COL8 TEXT,COL9 TEXT,COL10 TEXT)");
     }
 
     @Override
