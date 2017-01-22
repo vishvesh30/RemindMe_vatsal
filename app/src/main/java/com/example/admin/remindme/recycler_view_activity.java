@@ -27,15 +27,14 @@ public class recycler_view_activity extends AppCompatActivity {
         mRecyclerView.addItemDecoration(new recycler_view_divider(this, LinearLayoutManager.VERTICAL));
 
         DB=new SQLClass(this);
-        SQLiteDatabase dta=DB.getReadableDatabase();
         Cursor cursor=DB.viewAllData();
         if(cursor.getCount()!=0)
         {
             cursor.moveToFirst();
             do {
-                DataBaseModel model=new DataBaseModel(cursor.getString(4),cursor.getString(7),cursor.getString(3),cursor.getString(9)
-                        ,cursor.getString(5),cursor.getInt(0),cursor.getString(2),cursor.getString(1),cursor.getString(6),cursor.getString(8)
-                        ,cursor.getString(11),cursor.getString(12),cursor.getString(13),cursor.getString(10),cursor.getString(14));
+                DataBaseModel model=new DataBaseModel(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3)
+                        ,cursor.getString(4),cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getString(8),cursor.getString(9)
+                        ,cursor.getString(10),cursor.getString(11),cursor.getString(12),cursor.getString(13),cursor.getString(14));
                 arrayList.add(model);
             }while (cursor.moveToNext());
         }

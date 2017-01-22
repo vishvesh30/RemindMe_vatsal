@@ -16,6 +16,7 @@ public class SQLClass extends SQLiteOpenHelper{
     public static final String DATABASE_NAME="Remindme.db";
     public static final String TABLE_NAME="info_table";
     public static final String CAT_NAME="cat_table";
+    public static final String EXT_TABLE="extra_table";
     public static final String CAT_COL1="CATEGORY_NAME";
     public static final String COL1="ID";
     public static final String COL2="NAME";
@@ -23,14 +24,14 @@ public class SQLClass extends SQLiteOpenHelper{
     public static final String COL4="EMAIL";
     public static final String COL5="ADDRESS";
     public static final String COL6="GENDER";
-    public static final String COL7="NO";
-    public static final String COL8="DATE_BIRTH";
-    public static final String COL9="START_DATE";
-    public static final String COL10="END_DATE";
-    public static final String COL11="INSTALL_MONTH";
-    public static final String COL12="REMIND_TIME";
-    public static final String COL13="SNOOZE_TIME";
-    public static final String COL14="REMIND_DAY";
+    public static final String COL7="DATE_BIRTH";
+    public static final String COL8="START_DATE";
+    public static final String COL9="END_DATE";
+    public static final String COL10="INSTALL_MONTH";
+    public static final String COL11="REMIND_TIME";
+    public static final String COL12="SNOOZE_TIME";
+    public static final String COL13="REMIND_DAY";
+    public static final String COL14="DESC";
     public static final String COL15="TYPE";
 
     public SQLClass(Context context) {
@@ -41,13 +42,15 @@ public class SQLClass extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + CAT_NAME + "(CATEGORY_NAME TEXT)");
-        db.execSQL("create table " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT,MOBILE_NO TEXT,EMAIL TEXT,ADDRESS TEXT,GENDER TEXT,NO TEXT,DATE_BIRTH TEXT,START_DATE TEXT,END_DATE TEXT,INSTALL_MONTH TEXT,REMIND_TIME TEXT,SNOOZE_TIME TEXT,REMIND_DAY TEXT,TYPE TEXT)");
+        db.execSQL("create table " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT,MOBILE_NO TEXT,EMAIL TEXT,ADDRESS TEXT,GENDER TEXT,DATE_BIRTH TEXT,START_DATE TEXT,END_DATE TEXT,INSTALL_MONTH TEXT,REMIND_TIME TEXT,SNOOZE_TIME TEXT,REMIND_DAY TEXT,DESC TEXT,TYPE TEXT)");
+        db.execSQL("create table " + EXT_TABLE + "(ID INTEGER PRIMARY KEY,COL1 TEXT,COL2 TEXT,COL3 TEXT,COL4 TEXT,COL5 TEXT,COL6 TEXT,COL7 TEXT,COL8 TEXT,COL9 TEXT,COL10 TEXT,)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE "+TABLE_NAME);
         db.execSQL("DROP TABLE "+CAT_NAME);
+        db.execSQL("DROP TABLE "+EXT_TABLE);
         onCreate(db);
     }
 
@@ -88,7 +91,7 @@ public class SQLClass extends SQLiteOpenHelper{
         return res;
     }
 
-    public boolean insertdata(String address, String birth_Date, String email_Id, String end_Date, String gender, String mobile_No, String name, String no, String start_Date, String remindme, String snooze_time, String Remindday, String install_month, String type)
+    public boolean insertdata(String address, String birth_Date, String email_Id, String end_Date, String gender, String mobile_No, String name, String start_Date, String remindme, String snooze_time, String Remindday, String install_month, String desc,String type)
     {
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
@@ -97,14 +100,14 @@ public class SQLClass extends SQLiteOpenHelper{
         contentValues.put(COL4, email_Id);
         contentValues.put(COL5, address);
         contentValues.put(COL6, gender);
-        contentValues.put(COL7, no);
-        contentValues.put(COL8,birth_Date);
-        contentValues.put(COL9,start_Date);
-        contentValues.put(COL10,end_Date);
-        contentValues.put(COL11,install_month);
-        contentValues.put(COL12,remindme);
-        contentValues.put(COL13,snooze_time);
-        contentValues.put(COL14,Remindday);
+        contentValues.put(COL7,birth_Date);
+        contentValues.put(COL8,start_Date);
+        contentValues.put(COL9,end_Date);
+        contentValues.put(COL10,install_month);
+        contentValues.put(COL11,remindme);
+        contentValues.put(COL12,snooze_time);
+        contentValues.put(COL13,Remindday);
+        contentValues.put(COL14,desc);
         contentValues.put(COL15,type);
         long result=db.insert(TABLE_NAME,null,contentValues);
         if(result==-1)
@@ -116,7 +119,7 @@ public class SQLClass extends SQLiteOpenHelper{
         }
     }
 
-    public boolean updatedata(String id,String address, String birth_Date, String email_Id, String end_Date, String gender, String mobile_No, String name, String no, String start_Date, String remindme, String snooze_time, String Remindday, String install_month, String type)
+    public boolean updatedata(String id,String address, String birth_Date, String email_Id, String end_Date, String gender, String mobile_No, String name, String start_Date, String remindme, String snooze_time, String Remindday, String install_month,String desc ,String type)
     {
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
@@ -125,14 +128,14 @@ public class SQLClass extends SQLiteOpenHelper{
         contentValues.put(COL4, email_Id);
         contentValues.put(COL5, address);
         contentValues.put(COL6, gender);
-        contentValues.put(COL7, no);
-        contentValues.put(COL8,birth_Date);
-        contentValues.put(COL9,start_Date);
-        contentValues.put(COL10,end_Date);
-        contentValues.put(COL11,install_month);
-        contentValues.put(COL12,remindme);
-        contentValues.put(COL13,snooze_time);
-        contentValues.put(COL14,Remindday);
+        contentValues.put(COL7,birth_Date);
+        contentValues.put(COL8,start_Date);
+        contentValues.put(COL9,end_Date);
+        contentValues.put(COL10,install_month);
+        contentValues.put(COL11,remindme);
+        contentValues.put(COL12,snooze_time);
+        contentValues.put(COL13,Remindday);
+        contentValues.put(COL14,desc);
         contentValues.put(COL15,type);
         db.update(TABLE_NAME,contentValues,"ID = ?",new String[]{id});
         return true;

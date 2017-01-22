@@ -9,13 +9,19 @@ import java.util.Date;
 
 public class DataBaseModel {
 
-    String Email_Id,Name,Mobile_No,Address,Gender,Type,No;
+    String Email_Id;
+    String Name;
+    String Mobile_No;
+    String Address;
+    String Gender;
+    String Type;
+    String Desc;
     String Install_Month,Snooze_time_hour,Remind_day;
     String Birth_Date,Start_Date,End_Date;
     int Id;
     String Remind_time;
 
-    public DataBaseModel(String address, String birth_Date, String email_Id, String end_Date, String gender, int id, String mobile_No, String name, String no, String start_Date,String remindme,String snooze_time,String Remindday,String install_month,String type) {
+    public DataBaseModel(int id, String name, String mobile_No, String email_Id, String address, String gender, String birth_Date, String start_Date, String end_Date, String install_month,String remindme,String snooze_time,String Remindday,String desc,String type) {
         this.setAddress(address);
         this.setBirth_Date(birth_Date);
         this.setEmail_Id(email_Id);
@@ -24,7 +30,7 @@ public class DataBaseModel {
         this.setId(id);
         this.setMobile_No(mobile_No);
         this.setName(name);
-        this.setNo(no);
+        this.setDesc(desc);
         this.setStart_Date(start_Date);
         this.setSnooze_time_hour(snooze_time);
         this.setRemind_day(Remindday);
@@ -145,12 +151,12 @@ public class DataBaseModel {
         Mobile_No = mobile_No;
     }
 
-    public String getNo() {
-        return No;
+    public String getDesc() {
+        return Desc;
     }
 
-    public void setNo(String no) {
-        No = no;
+    public void setDesc(String desc) {
+        Desc = desc;
     }
 
 }

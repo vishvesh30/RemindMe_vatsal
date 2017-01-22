@@ -23,19 +23,19 @@ import java.util.Calendar;
 
 public class Main2Activity extends AppCompatActivity {
 
-    static String Name,Mobile,Email,Address,No,Date_Birth,Type,Gender;
+    static String Name,Mobile,Email,Address,Date_Birth,Type,Gender;
     Spinner install_duration,snooze,day_remind;
     ArrayAdapter dataAdapter1,dataAdapter2,dataAdapter3;
     ArrayList<String> installment=new ArrayList<>();
     ArrayList<String> snooze_interval=new ArrayList<>();
     ArrayList<String> remind_day=new ArrayList<>();
     ImageView timepicker,startpicker,endpicker;
-    EditText time,start_date,end_date;
+    EditText time,start_date,end_date,desc;
     int mHour,mMinute,mYear,mMonth,mDay;
     Button submit;
     SQLClass sql;
 
-    public static Intent newIntent(Context context, String name,String mobile,String email,String address,String no,String date_birth,String gender,String type)
+    public static Intent newIntent(Context context, String name,String mobile,String email,String address,String date_birth,String gender,String type)
     {
         Gender=gender;
         Type=type;
@@ -43,7 +43,6 @@ public class Main2Activity extends AppCompatActivity {
         Mobile=mobile;
         Email=email;
         Address=address;
-        No=no;
         Date_Birth=date_birth;
         Intent i=new Intent(context,Main2Activity.class);
         return i;
@@ -92,6 +91,7 @@ public class Main2Activity extends AppCompatActivity {
     }
     public void AddData()
     {
+        desc=(EditText) findViewById(R.id.edttext_form_description);
         start_date=(EditText) findViewById(R.id.edittext_form_start_date);
         end_date=(EditText) findViewById(R.id.edittext_form_end_date);
         time=(EditText) findViewById(R.id.edittext_form_remind_time);
@@ -183,9 +183,9 @@ public class Main2Activity extends AppCompatActivity {
 
 
                         boolean isInserted=sql.insertdata(Address,Date_Birth,Email,end_date.getText().toString()
-                                ,Gender,Mobile,Name,No,start_date.getText().toString()
+                                ,Gender,Mobile,Name,start_date.getText().toString()
                                 ,time.getText().toString(),snooze.getSelectedItem().toString(),day_remind.getSelectedItem().toString()
-                                ,install_duration.getSelectedItem().toString(),Type);
+                                ,install_duration.getSelectedItem().toString(),desc.getText().toString(),Type);
 
                         if(isInserted==true)
                         {

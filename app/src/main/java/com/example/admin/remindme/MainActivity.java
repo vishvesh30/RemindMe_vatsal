@@ -13,13 +13,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText name,mobile,email,address,no,date_birth;
+    EditText name,mobile,email,address,date_birth;
     Button next;
     static String type;
     RadioGroup rdgp;
@@ -55,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         mobile=(EditText) findViewById(R.id.edittext_form_mobile_no);
         email=(EditText) findViewById(R.id.edittext_form_email);
         address=(EditText) findViewById(R.id.edittext_form_address);
-        no=(EditText) findViewById(R.id.edittext_form_no);
         date_birth=(EditText) findViewById(R.id.edittext_form_date_birth);
         next=(Button) findViewById(R.id.button_form_submit);
 
@@ -75,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                         int id=rdgp.getCheckedRadioButtonId();
                         rdbutton=(RadioButton) findViewById(id);
                         Intent i = Main2Activity.newIntent(MainActivity.this,name.getText().toString(),mobile.getText().toString()
-                        ,email.getText().toString(),address.getText().toString(),no.getText().toString(),date_birth.getText().toString(),rdbutton.getText().toString(),type);
+                        ,email.getText().toString(),address.getText().toString(),date_birth.getText().toString(),rdbutton.getText().toString(),type);
                         startActivity(i);
                     }
                 }
