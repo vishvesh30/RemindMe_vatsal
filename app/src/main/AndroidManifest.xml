@@ -12,16 +12,19 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
         <activity android:name=".DropDownActivity">
+
+        </activity>
+        <activity android:name=".Main2Activity" />
+        <activity android:name=".recycler_view_activity" />
+        <activity android:name=".recycler_view_details_activity" />
+        <activity android:name=".add_category_name" />
+        <activity android:name=".list_category">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Main2Activity" />
-        <activity android:name=".recycler_view_activity" />
-        <activity android:name=".recycler_view_details_activity" />
-        <activity android:name=".add_category_name"></activity>
     </application>
 
 </manifest>

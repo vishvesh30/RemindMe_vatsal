@@ -190,7 +190,7 @@ public class Main2Activity extends AppCompatActivity {
                         if(isInserted==true)
                         {
                             Toast.makeText(Main2Activity.this,"Data Successfully Added",Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(Main2Activity.this,recycler_view_activity.class));
+                            startActivity(new Intent(Main2Activity.this,list_category.class));
                         }
                         else
                         {
