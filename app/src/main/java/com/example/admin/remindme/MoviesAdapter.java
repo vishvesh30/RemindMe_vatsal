@@ -14,10 +14,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import org.joda.time.DateTimeUtils;
-
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -92,7 +88,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
 
         holder.no.setText(ddd.getMobile_No());
         holder.name.setText(ddd.getName());
-       holder.days_left1.setText(String.valueOf(total_days));
+       holder.days_left1.setText(String.valueOf(total_days)+" Day left");
 
         int progress=365-(int)total_days;
         if(progress<=0){

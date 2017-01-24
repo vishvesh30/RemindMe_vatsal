@@ -11,10 +11,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Toast;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivityVishvesh extends AppCompatActivity {
 

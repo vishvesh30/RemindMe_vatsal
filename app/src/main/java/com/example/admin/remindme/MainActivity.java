@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {

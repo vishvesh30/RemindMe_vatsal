@@ -1,7 +1,5 @@
 package com.example.admin.remindme;
 
-import android.app.TimePickerDialog;
-import java.util.Date;
 
 /**
  * Created by admin on 19-01-2017.

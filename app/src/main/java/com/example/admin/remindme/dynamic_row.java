@@ -1,6 +1,5 @@
 package com.example.admin.remindme;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -15,7 +14,6 @@ import android.widget.LinearLayout;
 import android.app.ActionBar.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 
 /**
