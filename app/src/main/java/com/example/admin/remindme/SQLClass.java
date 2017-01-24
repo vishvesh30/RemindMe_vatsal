@@ -2,9 +2,11 @@ package com.example.admin.remindme;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.preference.PreferenceManager;
 
 import java.util.ArrayList;
 
@@ -39,10 +41,28 @@ public class SQLClass extends SQLiteOpenHelper{
     public static final String EXT_COL1="COL1",EXT_COL2="COL2",EXT_COL3="COL3",EXT_COL4="COL4",EXT_COL5="COL5",EXT_COL6="COL6";
     public static final String EXT_COL7="COL7",EXT_COL8="COL8",EXT_COL9="COL9",EXT_COL10="COL10";
     ArrayList<String> arr=new ArrayList<>();
+    ArrayList<String> list_cat=new ArrayList<>();
+    int chk=0;
 
     public SQLClass(Context context) {
         super(context, DATABASE_NAME, null, 1);
-        db=this.getWritableDatabase();
+        SharedPreferences settings=PreferenceManager.getDefaultSharedPreferences(context);
+        chk=settings.getInt("silentMode",0);
+        if(chk==0)
+        {
+            settings= PreferenceManager.getDefaultSharedPreferences(context);
+            SharedPreferences.Editor editor=settings.edit();
+            editor.putInt("silentMode",1);
+            editor.commit();
+            db=this.getWritableDatabase();
+            list_cat.add("Mediclaim");
+            list_cat.add("LIC");
+            list_cat.add("FD");
+            for(int i=0;i<list_cat.size();i++)
+            {
+                insertdefault(list_cat.get(i));
+            }
+        }
     }
 
     @Override
@@ -58,6 +78,14 @@ public class SQLClass extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE "+CAT_NAME);
         db.execSQL("DROP TABLE "+EXT_TABLE);
         onCreate(db);
+    }
+
+    public void insertdefault(String item)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+        contentValues.put(CAT_COL1,item);
+        db.insert(CAT_NAME,null,contentValues);
     }
 
     public boolean insertcategory(String cat_name)
