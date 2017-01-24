@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="item1" type="id">first</item>
+    <item name="item2" type="id">second</item>
+    <item name="item3" type="id">third</item>
+    <item name="item4" type="id">fourth</item>
+    <item name="item5" type="id">fifth</item>
+    <item name="item6" type="id">sixth</item>
+    <item name="item7" type="id">seventh</item>
+    <item name="item8" type="id">eigth</item>
+    <item name="item9" type="id">nine</item>
+    <item name="item10" type="id">ten</item>
+</resources>

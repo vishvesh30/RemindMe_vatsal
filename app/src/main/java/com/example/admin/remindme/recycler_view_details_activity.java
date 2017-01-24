@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -14,6 +16,7 @@ public class recycler_view_details_activity extends AppCompatActivity {
 
     static DataBaseModel dx;
     TextView name,mobile,email,address,gender,birth_date;
+    Button extra_button;
 
     public static Intent newIntent(Context context, DataBaseModel dbb)
     {
@@ -40,5 +43,16 @@ public class recycler_view_details_activity extends AppCompatActivity {
         address.setText(dx.getAddress());
         gender.setText(dx.getGender());
         birth_date.setText(dx.getBirth_Date());
+
+        extra_button=(Button) findViewById(R.id.details_button_extra);
+        extra_button.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent i=dynamic_row.newIntent(recycler_view_details_activity.this,dx.getId());
+                        startActivity(i);
+                    }
+                }
+        );
     }
 }

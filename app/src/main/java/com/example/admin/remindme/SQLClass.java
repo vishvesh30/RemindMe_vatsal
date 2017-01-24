@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 /**
  * Created by admin on 19-01-2017.
  */
@@ -36,6 +38,7 @@ public class SQLClass extends SQLiteOpenHelper{
     public static final String EXT_COLID="ID";
     public static final String EXT_COL1="COL1",EXT_COL2="COL2",EXT_COL3="COL3",EXT_COL4="COL4",EXT_COL5="COL5",EXT_COL6="COL6";
     public static final String EXT_COL7="COL7",EXT_COL8="COL8",EXT_COL9="COL9",EXT_COL10="COL10";
+    ArrayList<String> arr=new ArrayList<>();
 
     public SQLClass(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -120,6 +123,51 @@ public class SQLClass extends SQLiteOpenHelper{
         else {
             return true;
         }
+    }
+    public boolean insertextra(ArrayList<String> tmp,int id)
+    {
+        arr.add(EXT_COL1);
+        arr.add(EXT_COL2);
+        arr.add(EXT_COL3);
+        arr.add(EXT_COL4);
+        arr.add(EXT_COL5);
+        arr.add(EXT_COL6);
+        arr.add(EXT_COL7);
+        arr.add(EXT_COL8);
+        arr.add(EXT_COL9);
+        arr.add(EXT_COL10);
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+        contentValues.put(EXT_COLID,id);
+        int i;
+        for(i=0;i<tmp.size();i++)
+        {
+            contentValues.put(arr.get(i),tmp.get(i));
+        }
+        if(tmp.size()<10)
+        {
+            while(i<10)
+            {
+                contentValues.put(arr.get(i),"null");
+                i++;
+            }
+        }
+        long result=db.insert(EXT_TABLE,null,contentValues);
+        if(result==-1)
+        {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    public Cursor viewAllExtra()
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        String[] projections={EXT_COLID,EXT_COL1,EXT_COL2,EXT_COL3,EXT_COL4,EXT_COL5,EXT_COL6,EXT_COL7,EXT_COL8,EXT_COL9,EXT_COL10};
+        Cursor res=db.query(EXT_TABLE,projections,null,null,null,null,null);
+        return res;
     }
 
     public boolean updatedata(String id,String address, String birth_Date, String email_Id, String end_Date, String gender, String mobile_No, String name, String start_Date, String remindme, String snooze_time, String Remindday, String install_month,String desc ,String type)
