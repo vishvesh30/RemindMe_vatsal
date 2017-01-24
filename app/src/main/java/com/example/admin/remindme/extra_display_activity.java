@@ -47,23 +47,23 @@ public class extra_display_activity extends AppCompatActivity {
                 if(id==data.getInt(0))
                 {
                     one.setText(data.getString(1));
-                    if(data.getString(2)!="null")
+                    if(!data.getString(2).equals("null"))
                         two.setText(data.getString(2));
-                    if(data.getString(3)!="null")
+                    if(!data.getString(3).equals("null"))
                         three.setText(data.getString(3));
-                    if(data.getString(4)!="null")
+                    if(!data.getString(4).equals("null"))
                         four.setText(data.getString(4));
-                    if(data.getString(5)!="null")
+                    if(!data.getString(5).equals("null"))
                         five.setText(data.getString(5));
-                    if(data.getString(6)!="null")
+                    if(!data.getString(6).equals("null"))
                         six.setText(data.getString(6));
-                    if(data.getString(7)!="null")
+                    if(!data.getString(7).equals("null"))
                         seven.setText(data.getString(7));
-                    if(data.getString(8)!="null")
+                    if(!data.getString(8).equals("null"))
                         eight.setText(data.getString(8));
-                    if(data.getString(9)!="null")
+                    if(!data.getString(9).equals("null"))
                         nine.setText(data.getString(9));
-                    if(data.getString(10)!="null")
+                    if(!data.getString(10).equals("null"))
                         ten.setText(data.getString(10));
                 }
             }while (data.moveToNext());
