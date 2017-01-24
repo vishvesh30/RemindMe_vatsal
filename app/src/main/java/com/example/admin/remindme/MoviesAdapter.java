@@ -96,7 +96,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
 
         int progress=365-(int)total_days;
         if(progress<=0){
-            progress=365;
+            progress=0;
         }
         if(progress>350) {
             holder.progressBar.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
