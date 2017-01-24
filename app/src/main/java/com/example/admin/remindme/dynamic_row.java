@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,12 +24,15 @@ import java.util.ArrayList;
 public class dynamic_row extends AppCompatActivity{
 
     ArrayList<String> arr=new ArrayList<>();
-    int count=0;
     Button add_field;
     Button add_more_field,submit;
     EditText name_of_field;
     SQLClass db;
     static int id;
+    String tmp;
+    TextView name;
+    EditText val;
+    int x=0;
 
     public static Intent newIntent(Context context,int tmp)
     {
@@ -50,6 +55,11 @@ public class dynamic_row extends AppCompatActivity{
         add_more_field.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(x!=0)
+                {
+                    arr.add(name.getText().toString()+"____"+tmp);
+                }
+                x=1;
                 add_field.setEnabled(true);
                 name_of_field.setEnabled(true);
                 Toast.makeText(getApplicationContext(),"Enter the name of field",Toast.LENGTH_SHORT);
@@ -66,19 +76,40 @@ public class dynamic_row extends AppCompatActivity{
                 ll.setOrientation(LinearLayout.HORIZONTAL);
 
                 // Create TextView
-               TextView name = new TextView(getApplicationContext());
+               name = new TextView(getApplicationContext());
                 name.setText(name_of_field.getText());
                 name.setTextColor(Color.parseColor("#000000"));
                 ll.addView(name);
                 // Create EditText
-                EditText val= new EditText(getApplicationContext());
+                val= new EditText(getApplicationContext());
                 val.setWidth(500);
                 val.setTextColor(Color.parseColor("#000000"));
-                arr.add(name.getText().toString()+"____"+val.getText().toString());
                 ll.addView(val);
+
+                val.addTextChangedListener(new TextWatcher() {
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int count) {
+                if (s.length() > 0)
+                {
+                    tmp=s.toString();
+                }
+
+            }
+
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+
+            }
+
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
                 //Add button to LinearLayout defined in XML
                 lm.addView(ll);
-                count++;
+
+
+
             }
         });
         submit=(Button) findViewById(R.id.btn2);
@@ -86,6 +117,7 @@ public class dynamic_row extends AppCompatActivity{
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        arr.add(name.getText().toString()+"____"+tmp);
                         boolean isInserted=db.insertextra(arr,id);
                         if(isInserted==true)
                         {
