@@ -12,10 +12,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
         <activity android:name=".DropDownActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".Main2Activity" />
         <activity android:name=".recycler_view_activity" >
@@ -26,7 +23,10 @@
         <activity android:name=".dynamic_row"></activity>
         <activity android:name=".extra_display_activity"></activity>
         <activity android:name=".MainActivityVishvesh">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
