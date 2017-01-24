@@ -35,7 +35,7 @@ public class add_category_name extends AppCompatActivity {
                         {
                             data.moveToFirst();
                             do {
-                                if(data.getString(0).equals(cat_name.getText().toString()))
+                                if(data.getString(0).toLowerCase().equals(cat_name.getText().toString().toLowerCase()))
                                 {
                                     chk=1;
                                     break;
