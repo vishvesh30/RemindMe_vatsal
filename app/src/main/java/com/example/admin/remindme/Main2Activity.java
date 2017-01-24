@@ -143,7 +143,7 @@ public class Main2Activity extends AppCompatActivity {
                                     public void onDateSet(DatePicker view, int year,
                                                           int monthOfYear, int dayOfMonth) {
 
-                                        start_date.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                                        start_date.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
 
                                     }
                                 }, mYear, mMonth, mDay);
@@ -167,7 +167,7 @@ public class Main2Activity extends AppCompatActivity {
                                     public void onDateSet(DatePicker view, int year,
                                                           int monthOfYear, int dayOfMonth) {
 
-                                        end_date.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                                        end_date.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
 
                                     }
                                 }, mYear, mMonth, mDay);

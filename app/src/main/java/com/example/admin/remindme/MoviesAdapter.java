@@ -15,8 +15,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import org.joda.time.DateTime;
-import org.joda.time.Days;
+import org.joda.time.DateTimeUtils;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -24,7 +23,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 
 /**
@@ -42,10 +40,6 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
 
         public MyViewHolder(View view) {
             super(view);
-/*            title = (TextView) view.findViewById(R.id.title);
-            genre = (TextView) view.findViewById(R.id.genre);
-            year = (TextView) view.findViewById(R.id.year);
-            totaldays = (TextView) view.findViewById(R.id.total_days);*/
             progressBar = (ProgressBar) view.findViewById(R.id.progressBar2);
             name=(TextView)view.findViewById(R.id.textView_name);
             no=(TextView)view.findViewById(R.id.textView_no);
@@ -71,57 +65,36 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
         setAnimation(holder.itemView, position);
         ddd= arrayList.get(position);
 
-        //for current date
-    /*    Calendar calendar = Calendar.getInstance();
-        int curr_year = calendar.get(Calendar.YEAR);
-        int curr_month = calendar.get(Calendar.MONTH);
-        int curr_date = calendar.get(Calendar.DATE);
-        curr_month += 1;*/
-
-        //for total days available
-        int total_days = 0;
-
-        //date from sqlite database
-        //int db_year = Integer.parseInt(arrayList.getYear());
-        //int db_month = Integer.parseInt(arrayList.getMonth());
-        //int db_date = Integer.parseInt(arrayList.getDate());
-
-        //for jola's time api dont forget to add gradle dependancy
-        // String date_from_db = String.valueOf(db_date) + "/" + String.valueOf(db_month) + "/" + String.valueOf(db_year) + " 09:29:58";
-        //String date_from_curr = String.valueOf(curr_date) + "/" + String.valueOf(curr_month) + "/" + String.valueOf(curr_year) + " 09:29:58";
-
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-
-        Date d1 = null;
-        Date d2 = null;
-
+        long total_days = 0;
         DataBaseModel dbm=arrayList.get(position);
         ddd=dbm;
 
+        final Calendar c = Calendar.getInstance();
+        int mYear = c.get(Calendar.YEAR);
+        int mMonth = c.get(Calendar.MONTH);
+        int mDay = c.get(Calendar.DAY_OF_MONTH);
+        String currentDateTimeString;
+        currentDateTimeString=mDay + "/" + (mMonth + 1) + "/" + mYear;
+        String endDateTimeString=dbm.getEnd_Date();
+        SimpleDateFormat simpleDateFormat =
+                new SimpleDateFormat("dd/M/yyyy");
+
         try {
-            d1 = format.parse(ddd.getEnd_Date());
-            d2 = format.parse(DateFormat.getDateTimeInstance().format(new Date()));
-            DateTime dt1 = new DateTime(d1);
-            DateTime dt2 = new DateTime(d2);
-            total_days = Days.daysBetween(dt1, dt2).getDays();
+
+            Date date2 = simpleDateFormat.parse(endDateTimeString);
+            Date date1 = simpleDateFormat.parse(currentDateTimeString);
+
+            total_days=printDifference(date1, date2);
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        //displaying data
-        /*String no = "Mobile No:-\t" + movie.getTitle();
-        String genre = "Genre:-\t" + movie.getGenre();
-        String Date = "Date:-\t" + date_from_db;
-        String days = "Total Days:-\t" + String.valueOf(total_days);
-        holder.title.setText(title);
-        holder.genre.setText(genre);
-        holder.year.setText(Date);
-        holder.totaldays.setText(days);*/
 
         holder.no.setText(ddd.getMobile_No());
         holder.name.setText(ddd.getName());
        holder.days_left1.setText(String.valueOf(total_days));
 
-        int progress=365-total_days;
+        int progress=365-(int)total_days;
         if(progress<=0){
             progress=365;
         }
@@ -152,5 +125,37 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
     @Override
     public int getItemCount() {
         return arrayList.size();
+    }
+    public long printDifference(Date startDate, Date endDate){
+
+        //milliseconds
+        long different = endDate.getTime() - startDate.getTime();
+
+        System.out.println("startDate : " + startDate);
+        System.out.println("endDate : "+ endDate);
+        System.out.println("different : " + different);
+
+        long secondsInMilli = 1000;
+        long minutesInMilli = secondsInMilli * 60;
+        long hoursInMilli = minutesInMilli * 60;
+        long daysInMilli = hoursInMilli * 24;
+
+        long elapsedDays = different / daysInMilli;
+        different = different % daysInMilli;
+
+        long elapsedHours = different / hoursInMilli;
+        different = different % hoursInMilli;
+
+        long elapsedMinutes = different / minutesInMilli;
+        different = different % minutesInMilli;
+
+        long elapsedSeconds = different / secondsInMilli;
+
+        System.out.printf(
+                "%d days, %d hours, %d minutes, %d seconds%n",
+                elapsedDays,
+                elapsedHours, elapsedMinutes, elapsedSeconds);
+        return elapsedDays;
+
     }
 }
