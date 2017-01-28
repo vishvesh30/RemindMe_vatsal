@@ -1,29 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_drop_down"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.admin.remindme.DropDownActivity">
+    android:orientation="vertical"
+    tools:context="com.example.admin.remindme.DropDownActivity"
+    android:theme="@style/AppTheme"
+    android:background="@drawable/background">
 
-    <Spinner
-        android:id="@+id/spinner_types"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></Spinner>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/drop_button_new_category"
         android:id="@+id/button_new_category"
-        android:layout_toRightOf="@id/spinner_types"/>
+        android:layout_gravity="center"
+        android:layout_marginTop="95dp" />
+
+
+    <Spinner
+        android:id="@+id/spinner_types"
+        android:layout_width="293dp"
+        android:layout_height="45dp"
+        android:layout_below="@+id/button_new_category"
+        android:layout_marginTop="230dp"
+        android:layout_gravity="center_horizontal"
+        android:elevation="2dp"
+        android:background="@android:drawable/spinner_background" />
 
     <Button
-        android:layout_below="@+id/spinner_types"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button_dropdown"
-        android:text="@string/button_dropdown_submit"/>
-
-</RelativeLayout>
+        android:text="@string/button_dropdown_submit"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center"
+        android:textSize="14sp" />
+</FrameLayout>

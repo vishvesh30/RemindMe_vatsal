@@ -5,11 +5,12 @@
     <string name="form_email">Email-Id</string>
     <string name="form_address">Address</string>
     <string name="form_no">No</string>
-    <string name="form_date_birth">Date Of birth</string>
+    <string name="form_date_birth">Date Of Birth</string>
     <string name="form_start_date">Start Date</string>
     <string name="form_end_date">End Date</string>
+    <string name="form_gender">Gender</string>
     <string name="form_install_month">Install Duration</string>
-    <string name="form_remind_time">Time of Reminder</string>
+    <string name="form_remind_time">Time of Reminder </string>
     <string name="form_snooze_time">Interval of Snooze</string>
     <string name="form_remind_day">Remind Day</string>
     <string name="radiobutton_form_male">Male</string>

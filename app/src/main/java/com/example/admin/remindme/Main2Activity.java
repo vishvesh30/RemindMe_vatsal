@@ -116,7 +116,7 @@ public class Main2Activity extends AppCompatActivity {
                                     @Override
                                     public void onTimeSet(TimePicker view, int hourOfDay,
                                                           int minute) {
-
+                                        time.setVisibility(View.VISIBLE);
                                         time.setText(hourOfDay + ":" + minute);
                                     }
                                 }, mHour, mMinute, false);
@@ -139,7 +139,7 @@ public class Main2Activity extends AppCompatActivity {
                                     @Override
                                     public void onDateSet(DatePicker view, int year,
                                                           int monthOfYear, int dayOfMonth) {
-
+                                        start_date.setVisibility(View.VISIBLE);
                                         start_date.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
 
                                     }
@@ -163,7 +163,7 @@ public class Main2Activity extends AppCompatActivity {
                                     @Override
                                     public void onDateSet(DatePicker view, int year,
                                                           int monthOfYear, int dayOfMonth) {
-
+                                        end_date.setVisibility(View.VISIBLE);
                                         end_date.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
 
                                     }
